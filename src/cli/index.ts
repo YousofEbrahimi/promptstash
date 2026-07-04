@@ -13,8 +13,9 @@ import { execCommand } from "./commands/exec.js";
 import { shareCommand } from "./commands/share.js";
 import { pullCommand } from "./commands/pull.js";
 import { configCommand } from "./commands/config.js";
+import { webCommand } from "./commands/web.js";
 
-const VERSION = "1.0.0";
+const VERSION = "1.1.0";
 
 export function buildCli(): Command {
   const program = new Command();
@@ -37,6 +38,7 @@ export function buildCli(): Command {
   program.addCommand(shareCommand);
   program.addCommand(pullCommand);
   program.addCommand(configCommand);
+  program.addCommand(webCommand);
 
   return program;
 }

@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] — 2026-07-04
+
+### Features
+
+- **web** — Local read-only web dashboard (`promptstash web`). Browses prompts, lexical + semantic search, per-version inspection, and visual diff between versions. Zero-dependency HTTP server (Node `http`) binding to `127.0.0.1` by default; single-page dashboard served at `/`.
+- **semantic search (graduated)** — `semanticSearch` now shipped and wired into `promptstash search --semantic` and the web dashboard; toggle via `config set semanticSearch true`.
+- **Promptstash.web()** — Programmatic library entry to launch the dashboard over the current store.
+- **Dashboard JSON API** — `/api/info`, `/api/prompts`, `/api/prompts/:name[/versions[/:n]]`, `/api/prompts/:name/diff/:a/:b`, `/api/search`, `/api/health`.
+
+### Architecture
+
+- `src/web/server.ts` — zero-dep HTTP server reused by both CLI and library.
+- `src/web/dashboard.ts` — self-contained SPA (HTML + CSS + JS) embedded as a string.
+- `src/web/opener.ts` — cross-platform `open-url` helper, no external dep.
+
+---
+
 ## [1.0.0] — 2026-07-04
 
 ### Features

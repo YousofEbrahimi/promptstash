@@ -9,8 +9,11 @@ import { renderBody, extractVariables } from "./core/prompt.js";
 import type { Config } from "./config/index.js";
 import { readConfig } from "./config/index.js";
 import { renderCard } from "./render/card.js";
+import { startWebServer, type WebServerHandle, type WebServerOptions } from "./web/server.js";
 
 export type { Prompt, Version, SearchHit, Config };
+export type { WebServerHandle, WebServerOptions };
+export { startWebServer };
 export { renderCard };
 
 /**
@@ -22,33 +25,36 @@ export { renderCard };
  * const ps = await Promptstash.open();
  * await ps.add("code-reviewer", "Review this {{language}} code...");
  * const result = await ps.diff("code-reviewer", 1, 2);
+ * const web = await ps.web({ port: 6363 }); // local dashboard
  * ```
  */
 export class Promptstash {
   private _store: Store;
   private _repo: PromptRepository;
+  private readonly _here: boolean;
 
-  private constructor(store: Store, repo: PromptRepository) {
+  private constructor(store: Store, repo: PromptRepository, here = false) {
     this._store = store;
     this._repo = repo;
+    this._here = here;
   }
 
   /** Open the global store, creating it if absent. */
   static async open(here = false): Promise<Promptstash> {
     const store = await Store.openOrCreate(here);
-    return new Promptstash(store, new PromptRepository(store.raw));
+    return new Promptstash(store, new PromptRepository(store.raw), here);
   }
 
   /** Open the store, throwing if it does not exist. */
   static async openExisting(here = false): Promise<Promptstash> {
     const store = await Store.open(here);
-    return new Promptstash(store, new PromptRepository(store.raw));
+    return new Promptstash(store, new PromptRepository(store.raw), here);
   }
 
   /** Initialize a new store. */
   static async init(here = false): Promise<Promptstash> {
     const store = await Store.init(here);
-    return new Promptstash(store, new PromptRepository(store.raw));
+    return new Promptstash(store, new PromptRepository(store.raw), here);
   }
 
   // -- Prompts --
@@ -137,6 +143,28 @@ export class Promptstash {
 
   search(query: string): SearchHit[] {
     return search(this._store.raw, query);
+  }
+
+  // -- Web dashboard --
+
+  /**
+   * Start a read-only local web dashboard over this store's prompts.
+   * Resolves once the HTTP server is listening. Bind to loopback only.
+   *
+   * ```ts
+   * const ps = await Promptstash.open();
+   * const handle = await ps.web({ port: 6363 });
+   * // open http://127.0.0.1:6363 in a browser
+   * await handle.close();
+   * ```
+   */
+  web(opts?: WebServerOptions & { here?: boolean }): Promise<WebServerHandle> {
+    // Default `here` to the scope this instance was opened with, so a
+    // project-local `Promptstash.open(true)` instance serves its own store
+    // rather than silently falling back to the global/home store.
+    // Note: the web server opens its own Store handle so the dashboard always
+    // reflects the latest persisted state rather than this instance's snapshot.
+    return startWebServer({ ...opts, here: opts?.here ?? this._here });
   }
 
   // -- Config --

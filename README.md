@@ -95,6 +95,24 @@ Generate stunning SVG cards from any prompt. Post them to Twitter, LinkedIn, or 
 ### 🔒 Local-first & private
 Your prompts live in `~/.promptstash/store.json`. No account. No telemetry. No vendor lock-in. You own your data.
 
+### 🌐 Local web dashboard
+Browse, search (lexical or semantic), inspect versions, and visually diff your prompts in a browser — all local, read-only, loopback-bound:
+
+```bash
+promptstash web              # http://127.0.0.1:6363
+promptstash web -p 8080      # custom port
+promptstash web --here       # over the project-local store
+```
+
+Or programmatically:
+
+```ts
+const handle = await ps.web({ port: 6363 });
+await handle.close();
+```
+
+No server, no cloud — the dashboard is a single zero-dependency HTML page served over Node's built-in `http`.
+
 ### 📦 Dual-use: CLI + library
 Use promptstash from the terminal **or** import it as a Node.js library:
 
@@ -149,6 +167,7 @@ npm link
 | `promptstash share <name> [-p local] [--accent #color]` | Generate & publish a share card |
 | `promptstash pull <file>` | Import a `.prompt.md` file |
 | `promptstash config get/set/list` | Manage configuration |
+| `promptstash web [-p port] [-H host] [--here]` | Launch a local read-only web dashboard |
 
 ## Prompt format
 
@@ -196,7 +215,7 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 ## Roadmap
 
 - [x] **v1.0** — Core CLI: init, add, list, show, edit, diff, tag, rm, search, exec, share, pull, config
-- [ ] **v1.1** — Semantic search (local embeddings), web UI (local dashboard)
+- [x] **v1.1** — Semantic search (local TF-IDF embeddings), web UI (local dashboard)
 - [ ] **v1.2** — Prompt marketplace (import by share-id), VS Code extension
 - [ ] **v2.0** — Team sync (self-hosted remote / S3-compatible), eval harness (assertions + datasets)
 
