@@ -5,7 +5,7 @@ Welcome! promptstash is a community-driven project. Here's how to get started.
 ## Development setup
 
 ```bash
-git clone https://github.com/promptstash/promptstash.git
+git clone https://github.com/YousofEbrahimi/promptstash.git
 cd promptstash
 npm install
 npm run build     # compile TypeScript

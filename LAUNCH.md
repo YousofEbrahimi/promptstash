@@ -109,7 +109,7 @@ Secondary:
 >
 > One command install: `npm install -g promptstash`
 >
-> Repo: https://github.com/promptstash/promptstash
+> Repo: https://github.com/YousofEbrahimi/promptstash
 >
 > Looking for contributors — adding a provider is literally 20 lines. See CONTRIBUTING.md.
 
@@ -129,7 +129,7 @@ Secondary:
 >
 > It's a Node CLI + importable library in TypeScript. Zero native deps so `npm install` is instant on Windows/Mac/Linux.
 >
-> Repo: https://github.com/promptstash/promptstash
+> Repo: https://github.com/YousofEbrahimi/promptstash
 >
 > Install: `npm i -g promptstash` or `npx promptstash`
 >
@@ -163,7 +163,7 @@ Secondary:
 >
 > promptstash fixes that: version, diff, tag, search, execute, and share your LLM prompts — all locally.
 >
-> ⭐ github.com/promptstash/promptstash
+> ⭐ github.com/YousofEbrahimi/promptstash
 > 📦 `npm install -g promptstash`
 >
 > Looking for early adopters and contributors. Adding a new LLM provider is a 20-line file — great first PR.

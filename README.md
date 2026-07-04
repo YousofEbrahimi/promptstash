@@ -6,7 +6,7 @@
 
 **git for prompts** — version, diff & share your LLM prompts, locally.
 
-[![CI](https://github.com/promptstash/promptstash/actions/workflows/ci.yml/badge.svg)](https://github.com/promptstash/promptstash/actions/workflows/ci.yml)
+[![CI](https://github.com/YousofEbrahimi/promptstash/actions/workflows/ci.yml/badge.svg)](https://github.com/YousofEbrahimi/promptstash/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/promptstash.svg)](https://www.npmjs.com/package/promptstash)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/node/v/promptstash.svg)](https://nodejs.org)
@@ -125,7 +125,7 @@ npx promptstash init
 ### From source
 
 ```bash
-git clone https://github.com/promptstash/promptstash.git
+git clone https://github.com/YousofEbrahimi/promptstash.git
 cd promptstash
 npm install
 npm run build

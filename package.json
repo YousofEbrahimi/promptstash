@@ -16,13 +16,13 @@
   ],
   "license": "MIT",
   "author": "promptstash contributors",
-  "homepage": "https://github.com/promptstash/promptstash",
+"homepage": "https://github.com/YousofEbrahimi/promptstash",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/promptstash/promptstash.git"
+    "url": "git+https://github.com/YousofEbrahimi/promptstash.git"
   },
   "bugs": {
-    "url": "https://github.com/promptstash/promptstash/issues"
+    "url": "https://github.com/YousofEbrahimi/promptstash/issues"
   },
   "type": "module",
   "bin": {

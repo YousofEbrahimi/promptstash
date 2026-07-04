@@ -14,7 +14,7 @@ hero:
       link: /docs
     - theme: alt
       text: GitHub
-      link: https://github.com/promptstash/promptstash
+      link: https://github.com/YousofEbrahimi/promptstash
 
 features:
   - title: Versioned prompts

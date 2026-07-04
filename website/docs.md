@@ -39,16 +39,16 @@ promptstash share code-reviewer
 
 ## Commands
 
-See the [README](https://github.com/promptstash/promptstash#commands) for the full command reference.
+See the [README](https://github.com/YousofEbrahimi/promptstash#commands) for the full command reference.
 
 ## Architecture
 
-See [architecture.md](https://github.com/promptstash/promptstash/blob/main/docs/architecture.md).
+See [architecture.md](https://github.com/YousofEbrahimi/promptstash/blob/main/docs/architecture.md).
 
 ## Adding providers
 
-See [providers.md](https://github.com/promptstash/promptstash/blob/main/docs/providers.md).
+See [providers.md](https://github.com/YousofEbrahimi/promptstash/blob/main/docs/providers.md).
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/promptstash/promptstash/blob/main/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/YousofEbrahimi/promptstash/blob/main/CONTRIBUTING.md).
