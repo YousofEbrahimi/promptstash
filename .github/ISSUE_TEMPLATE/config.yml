@@ -1,0 +1,9 @@
+# Defaults for all issue templates
+blank_issues_enabled: true
+contact_links:
+  - name: "\U0001F4AC Discussions"
+    url: https://github.com/promptstash/promptstash/discussions
+    about: Ask questions and share ideas
+  - name: "\U0001F4A1 Discord"
+    url: https://discord.gg/promptstash
+    about: Real-time chat with the community

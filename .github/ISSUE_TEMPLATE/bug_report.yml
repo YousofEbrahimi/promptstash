@@ -1,0 +1,61 @@
+name: Bug Report
+description: Report a bug in promptstash
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug report! Please fill out the template below.
+
+  - type: input
+    id: version
+    attributes:
+      label: promptstash version
+      description: Run `promptstash --version` to get the version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Exact commands and steps to reproduce the bug
+      placeholder: |
+        1. Run `promptstash add my-prompt`
+        2. Run `promptstash show my-prompt`
+        3. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Attach `PROMPTSTASH_DEBUG=1` output if available

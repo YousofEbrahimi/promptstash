@@ -1,0 +1,89 @@
+﻿{
+  "name": "promptstash",
+  "version": "1.0.0",
+  "description": "git for prompts — version, diff & share your LLM prompts, locally. Local-first CLI and library for prompt engineering.",
+  "keywords": [
+    "prompts",
+    "prompt-engineering",
+    "prompt-management",
+    "llm",
+    "ai",
+    "cli",
+    "developer-tools",
+    "version-control",
+    "local-first",
+    "prompt-library"
+  ],
+  "license": "MIT",
+  "author": "promptstash contributors",
+  "homepage": "https://github.com/promptstash/promptstash",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/promptstash/promptstash.git"
+  },
+  "bugs": {
+    "url": "https://github.com/promptstash/promptstash/issues"
+  },
+  "type": "module",
+  "bin": {
+    "promptstash": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.mjs",
+      "require": "./dist/core/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "chalk": "^5.4.0",
+    "commander": "^12.1.0",
+    "diff": "^7.0.0",
+    "gray-matter": "^4.0.3",
+    "node-emoji": "^2.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@types/diff": "^7.0.2",
+    "@types/node": "^22.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.0.1",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="56" fill="#0f172a"/>
+
+  <!-- Card stack backdrop -->
+  <rect x="60" y="56" width="120" height="140" rx="14" fill="#1e293b" opacity="0.6" transform="rotate(-6 120 126)"/>
+  <rect x="58" y="58" width="120" height="140" rx="14" fill="#1e293b" opacity="0.8" transform="rotate(-3 118 128)"/>
+
+  <!-- Top card -->
+  <rect x="56" y="60" width="124" height="144" rx="14" fill="#1e293b"/>
+  <rect x="56" y="60" width="124" height="6" rx="3" fill="#6366f1"/>
+
+  <!-- Prompt body lines -->
+  <rect x="74" y="90" width="88" height="6" rx="3" fill="#475569"/>
+  <rect x="74" y="104" width="60" height="6" rx="3" fill="#475569"/>
+  <rect x="74" y="118" width="76" height="6" rx="3" fill="#475569"/>
+
+  <!-- Variable highlight {{ }} -->
+  <rect x="74" y="138" width="14" height="10" rx="2" fill="#6366f1" opacity="0.25"/>
+  <rect x="74" y="138" width="14" height="10" rx="2" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="81" y="147" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8" fill="#a5b4fc" text-anchor="middle">{ }</text>
+
+  <!-- Version badge -->
+  <rect x="74" y="170" width="40" height="18" rx="9" fill="#6366f1"/>
+  <text x="94" y="183" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle">v2</text>
+
+  <!-- Diff indicator -->
+  <text x="140" y="183" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#22c55e" font-weight="700">+</text>
+  <text x="152" y="183" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#ef4444" font-weight="700">-</text>
+</svg>

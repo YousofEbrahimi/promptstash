@@ -1,0 +1,31 @@
+﻿# Source files
+src/
+tests/
+docs/
+examples/
+.github/
+website/
+assets/
+.eslintrc.cjs
+.prettierrc
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+.prettierignore
+.commitlintrc.cjs
+.release-please-manifest.json
+
+# Config that should not be published
+.editorconfig
+.gitignore
+.gitattributes
+
+# Tests
+*.test.ts
+*.spec.ts
+
+# Coverage
+coverage/
+
+# Misc
+*.log

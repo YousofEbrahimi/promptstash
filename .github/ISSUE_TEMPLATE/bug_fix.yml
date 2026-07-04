@@ -1,0 +1,41 @@
+name: "Bug fix PR"
+about: Submit a fix for an existing issue
+title: "fix: short description"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for fixing a bug! Please fill in the details.
+
+  - type: input
+    id: issue
+    attributes:
+      label: Related issue
+      description: "Link to the issue this PR fixes (e.g. Fixes #42)"
+      placeholder: "Fixes #42"
+
+  - type: textarea
+    id: changes
+    attributes:
+      label: What changed
+      description: Summary of the fix
+      placeholder: "Fixed a crash when running `promptstash show` on a non-existent prompt."
+
+  - type: textarea
+    id: tests
+    attributes:
+      label: Test coverage
+      description: How did you test the fix?
+      placeholder: "Added test for non-existent prompt case."
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      value: |
+        - [ ] Tests pass (`npm test`)
+        - [ ] Type-checks pass (`npm run typecheck`)
+        - [ ] Lint passes (`npm run lint`)
+        - [ ] Docs updated if needed
+        - [ ] Conventional commit used (feat/fix/docs/style/refactor/perf/test/build/ci/chore/revert)
