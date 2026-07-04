@@ -138,7 +138,7 @@ async function migrate(data: StoreData): Promise<StoreData> {
     return data;
   }
   // Avoid mutation of input: clone shallowly.
-  let out = structuredClone(data);
+  const out = structuredClone(data);
   if (cur === 0) {
     // Pre-existing or fresh-but-untagged store — treat as v1 with defaults.
     if (!out.projects?.length) {

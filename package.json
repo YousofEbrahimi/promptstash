@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "promptstash",
   "version": "1.0.0",
   "description": "git for prompts — version, diff & share your LLM prompts, locally. Local-first CLI and library for prompt engineering.",

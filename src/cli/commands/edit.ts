@@ -21,9 +21,10 @@ function parseEditor(editor: string): string[] {
   return editor.trim().split(/\s+/);
 }
 
-/** Sanitize a string for safe use in a file path (no path traversal chars). */
+/** Sanitize a string for safe use in a file path (no path traversal chars or control chars). */
 function safeFileName(name: string): string {
-  return name.replace(/[\/\\..\x00-\x1f\x7f]/g, "_");
+  // eslint-disable-next-line no-control-regex
+  return name.replace(/[/\\.]|[\x00-\x1f\x7f]/g, "_");
 }
 
 export const editCommand = new Command("edit")
