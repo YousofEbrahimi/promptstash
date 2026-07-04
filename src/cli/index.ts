@@ -1,4 +1,5 @@
 ﻿import { Command } from "commander";
+import { fileURLToPath } from "node:url";
 import { initCommand } from "./commands/init.js";
 import { addCommand } from "./commands/add.js";
 import { listCommand } from "./commands/list.js";
@@ -42,22 +43,25 @@ export function buildCli(): Command {
 
 // Run when executed directly (e.g. `node dist/cli.js` or via npm bin shebang).
 // Uses fileURLToPath for reliable cross-platform path comparison.
-try {
-  const { fileURLToPath } = await import("node:url");
-  const self = fileURLToPath(import.meta.url);
-  const argv1 = process.argv[1];
-  if (!argv1) {
-    // piping mode — still run the CLI (commander handles stdin)
-  } else {
-    // Normalize paths for comparison (handle Windows vs POSIX separators)
+// Wraps detection in a function to avoid top-level await (incompatible with CJS).
+function detectDirectExecution(): boolean {
+  try {
+    const self = fileURLToPath(import.meta.url);
+    const argv1 = process.argv[1];
+    if (!argv1) return true; // piping mode
     const selfNorm = self.replace(/\\/g, "/");
     const argvNorm = argv1.replace(/\\/g, "/");
-    if (selfNorm.endsWith(argvNorm) || argvNorm.endsWith(selfNorm) || selfNorm === argvNorm) {
-      buildCli().parse();
-    }
+    return (
+      selfNorm === argvNorm ||
+      selfNorm.endsWith(argvNorm) ||
+      argvNorm.endsWith(selfNorm)
+    );
+  } catch {
+    return true;
   }
-} catch {
-  // If fileURLToPath fails, run anyway — idempotent for CLI.
+}
+
+if (detectDirectExecution()) {
   buildCli().parse();
 }
 
