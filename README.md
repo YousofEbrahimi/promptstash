@@ -36,9 +36,15 @@ If you've ever copied a great prompt into ChatGPT, tweaked it, lost the original
 
 ## Quick start
 
+> ℹ️ **The package is not yet on the npm registry.** Install it locally from a clone of the repo until the first `npm publish`.
+
 ```bash
-# Install (one command)
-npm install -g promptstash
+# One-time setup: clone, build, and link the CLI globally
+git clone https://github.com/YousofEbrahimi/promptstash.git
+cd promptstash
+npm install
+npm run build
+npm link        # makes `promptstash` available on your PATH
 
 # Initialize your prompt library
 promptstash init
@@ -57,6 +63,9 @@ promptstash search "code review"
 
 # Run it against an LLM
 promptstash exec code-reviewer --provider openai --vars language=TypeScript focusAreas="security,performance"
+
+# Launch the local web dashboard (http://127.0.0.1:6363)
+promptstash web
 
 # Share a beautiful card on Twitter/X
 promptstash share code-reviewer
@@ -96,12 +105,14 @@ Generate stunning SVG cards from any prompt. Post them to Twitter, LinkedIn, or 
 Your prompts live in `~/.promptstash/store.json`. No account. No telemetry. No vendor lock-in. You own your data.
 
 ### 🌐 Local web dashboard
-Browse, search (lexical or semantic), inspect versions, and visually diff your prompts in a browser — all local, read-only, loopback-bound:
+Browse, search (lexical or semantic), inspect versions, and visually diff your prompts in a browser — all local, read-only, loopback-bound (non-loopback hosts are rejected):
 
 ```bash
 promptstash web              # http://127.0.0.1:6363
 promptstash web -p 8080      # custom port
+promptstash web -p 0         # random free port
 promptstash web --here       # over the project-local store
+promptstash web --host localhost  # explicit loopback
 ```
 
 Or programmatically:
@@ -128,19 +139,9 @@ console.log(diff.addedVariables);  // ["tone"]
 
 ## Installation
 
-### npm (recommended)
+> ⚠️ **Not on the npm registry yet.** `npm install -g promptstash` and `npx promptstash` will return a 404 until the first `npm publish`. Use the from-source install below for now.
 
-```bash
-npm install -g promptstash
-```
-
-### npx (no install)
-
-```bash
-npx promptstash init
-```
-
-### From source
+### From source (current)
 
 ```bash
 git clone https://github.com/YousofEbrahimi/promptstash.git
@@ -148,6 +149,26 @@ cd promptstash
 npm install
 npm run build
 npm link
+```
+
+`npm link` exposes the `promptstash` command on your `PATH`. To upgrade later, `git pull && npm install && npm run build`.
+
+### As a local library
+
+```bash
+npm install M:/path/to/promptstash
+```
+
+### After the first `npm publish` (planned)
+
+Once the package is on the registry, the one-liners below will work:
+
+```bash
+# Global CLI
+npm install -g promptstash
+
+# No install
+npx promptstash init
 ```
 
 ## Commands
@@ -167,7 +188,7 @@ npm link
 | `promptstash share <name> [-p local] [--accent #color]` | Generate & publish a share card |
 | `promptstash pull <file>` | Import a `.prompt.md` file |
 | `promptstash config get/set/list` | Manage configuration |
-| `promptstash web [-p port] [-H host] [--here]` | Launch a local read-only web dashboard |
+| `promptstash web [-p port] [-H host] [--here]` | Launch a local read-only web dashboard (loopback only) |
 
 ## Prompt format
 

@@ -26,6 +26,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `src/web/dashboard.ts` — self-contained SPA (HTML + CSS + JS) embedded as a string.
 - `src/web/opener.ts` — cross-platform `open-url` helper, no external dep.
 
+### Security & robustness
+
+- **Dashboard XSS hardened** — all prompt-sourced content (name, description, tags, version messages, variable names, diff lines) is rendered via `textContent`, never `innerHTML`; the broken `escapeHtml` (entity strings truncated inside the JS template literal) was removed.
+- **Loopback enforcement** — `promptstash web --host` now rejects non-loopback hosts (`127.0.0.1` / `localhost` / `::1` only), preventing accidental remote exposure of stored prompts and `storePath`.
+- **Error disclosure closed** — server 500 responses return a generic `"Internal error"` instead of raw `err.message` (full errors now logged server-side).
+- **Malformed URL handling** — `URIError` from `decodeURIComponent` on bad percent-encoding is caught and surfaced as a `400` rather than a 500.
+- **Diff line correctness** — `extractChangedLines` now mirrors jsdiff multiset semantics so `addedLines`/`removedLines` array lengths match the numeric counts in the same response.
+- **Version parsing** — diff/version routes accept canonical decimal integers only (rejects `0x1`/`1e1`/`1.0`).
+- **`Promptstash.web()` scope** — defaults `here` to the scope the instance was opened with, so `Promptstash.open(true).web()` serves the project-local store instead of silently falling back to the global store.
+- **Opener hardening** — `openUrl` rejects non-`http(s)://` URLs to neutralize cmd.exe metacharacter interpretation on Windows.
+- **Search caching** — `semanticSearch` caches the corpus IDF + doc vectors until the corpus signature changes, avoiding per-request rebuilds.
+
 ---
 
 ## [1.0.0] — 2026-07-04
