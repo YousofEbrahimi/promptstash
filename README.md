@@ -6,9 +6,10 @@
 
 **git for prompts** — version, diff & share your LLM prompts, locally.
 
-[![CI](https://github.com/YousofEbrahimi/promptstash/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/YousofEbrahimi/promptstash/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/YousofEbrahimi/promptstash/ci.yml?branch=master&logo=github)](https://github.com/YousofEbrahimi/promptstash/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6.svg)](https://www.typescriptlang.org/)
+[![Node >=20](https://img.shields.io/badge/Node-%3E%3D20-339933.svg?logo=node.js)](https://nodejs.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/YousofEbrahimi/promptstash/blob/master/CONTRIBUTING.md)
 
 </div>
